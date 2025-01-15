@@ -4,22 +4,32 @@ namespace App\Jawaban;
 
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Http\Request;
+use App\Models\User; 
 
 class NomorSatu {
 
-	public function auth (Request $request) {
+	public function auth(Request $request) {
+		$validated = $request->validate([
+			'username_or_email' => 'required|string',
+			'password' => 'required|string|min:6',
+		]);
+	
+		$field = filter_var($validated['username_or_email'], FILTER_VALIDATE_EMAIL) ? 'email' : 'username';
+	
+		if (Auth::attempt([$field => $validated['username_or_email'], 'password' => $validated['password']])) {
+			return redirect()->route('event.home');
+		}
+	
+		return back()->withErrors([
+			'username_or_email' => 'Username/Email atau password salah.',
+		]);
+	}	
 
-		// Tuliskan code untuk proses login dengan menggunakan email/username dan password
+    public function logout(Request $request) {
+        // Proses logout
+        Auth::logout();
 
-		return redirect()->route('event.home');
-	}
-
-	public function logout (Request $request) {
-
-		// Tuliskan code untuk menangani proses logout
-        
         return redirect()->route('event.home');
-	}
+    }
 }
-
 ?>

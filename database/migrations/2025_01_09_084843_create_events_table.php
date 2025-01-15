@@ -18,6 +18,8 @@ return new class extends Migration
             $table->date('start'); 
             $table->date('end');
             $table->timestamps();
+
+            $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
         });
     }
 

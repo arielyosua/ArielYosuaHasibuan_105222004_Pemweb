@@ -3,6 +3,7 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\SchedulerController;
+use App\Http\Controllers\EventController;
 
 
 /*
@@ -15,6 +16,15 @@ use App\Http\Controllers\SchedulerController;
 | be assigned to the "web" middleware group. Make something great!
 |
 */
+use App\Jawaban\NomorSatu;
+use App\Jawaban\NomorDua;
+
+
+Route::get('/event', [NomorDua::class, 'home'])->name('event.home');
+Route::post('/event/submit', [NomorDua::class, 'submit'])->name('event.submit');
+
+Route::post('/login', [NomorSatu::class, 'auth'])->name('auth.login');
+Route::post('/logout', [NomorSatu::class, 'logout'])->name('auth.logout');
 
 Route::post('auth', [AuthController::class, 'auth'])->name('auth');
 Route::get('logout', [AuthController::class, 'logout'])->name('logout');
