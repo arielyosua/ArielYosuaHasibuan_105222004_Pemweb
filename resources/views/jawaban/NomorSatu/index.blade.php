@@ -25,18 +25,15 @@
 	        		<label for="username_or_email">Username / Email</label>
 	        		<input type="text" class="form-control" id="username_or_email" name="username_or_email" required>
 	        	</div>
-
 	        	<div class="form-group">
 	        		<label for="password">Password</label>
 	        		<input type="password" class="form-control" id="password" name="password" required>
 	        	</div>
-
 	        	@if ($errors->has('username_or_email'))
 	        		<div class="alert alert-danger">
 	        			{{ $errors->first('username_or_email') }}
 	        		</div>
 	        	@endif
-
 	        	@if ($errors->has('password'))
 	        		<div class="alert alert-danger">
 	        			{{ $errors->first('password') }}

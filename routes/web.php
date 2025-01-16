@@ -20,10 +20,6 @@ use App\Jawaban\NomorSatu;
 use App\Jawaban\NomorDua;
 use App\Jawaban\NomorTiga;
 
-// Route::get('/event/{id}', [NomorTiga::class, 'getSelectedData'])->name('event.getSelectedData');
-// Route::post('/event/update', [NomorTiga::class, 'update'])->name('event.update');
-
-
 Route::get('/event/getData', [NomorTiga::class, 'getData'])->name('event.getData');
 Route::get('/event/{id}', [NomorTiga::class, 'getSelectedData']);
 Route::put('/event/{id}/update', [NomorTiga::class, 'update'])->name('event.update');
