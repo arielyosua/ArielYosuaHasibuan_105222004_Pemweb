@@ -19,6 +19,9 @@ use App\Http\Controllers\EventController;
 use App\Jawaban\NomorSatu;
 use App\Jawaban\NomorDua;
 use App\Jawaban\NomorTiga;
+use App\Jawaban\NomorEmpat;
+
+Route::get('/event/get-json', [NomorEmpat::class, 'getJson'])->name('event.get-json');
 
 Route::get('/event/getData', [NomorTiga::class, 'getData'])->name('event.getData');
 Route::get('/event/{id}', [NomorTiga::class, 'getSelectedData']);
